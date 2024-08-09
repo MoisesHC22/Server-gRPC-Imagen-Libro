@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC.Libro.Serve";
+
+package Imagen;
+
+service LibroImg {
+    rpc GuardarImg (ImgRequest) returns (Respuesta);
+	rpc ConsultaCompleta (Empty) returns (ImgResponse);
+	rpc ConsultaFiltro (IdImg) returns (ImgRequest);
+}
+
+message ImgRequest {
+   string id = 1;
+   string img = 2;
+}
+
+message ImgResponse {
+   repeated ImgRequest imagenes = 1;
+}
+
+message IdImg {
+	string id = 1;
+}
+
+message Empty {}
+
+message Respuesta {
+    string mensaje = 1;
+}
